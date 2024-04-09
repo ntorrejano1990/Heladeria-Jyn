@@ -206,8 +206,8 @@ export class ProductoComponent {
     this.sproducto.editar(this.id_producto, this.obj_producto).subscribe((datos:any) => {
       if(datos['resultado']=="ok") {
         this.consulta();
-        this.botones_form = true;
-        this.mostrar_form('ver');
+        this.botones_form = false;
+        this.mostrar_form('no ver');
       }
     })
   }

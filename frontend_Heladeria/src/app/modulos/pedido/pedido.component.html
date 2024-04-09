@@ -42,8 +42,8 @@
                   <td>{{item.fecha}}</td>
                   <td>{{item.nombrecl}}</td>
                   <td>
-                  <input type="button" class="btn btn-outline-success btn.sm" value="ver productos" (click)
-                  ="mostrar_modal(1)">
+                  <input type="button" class="btn btn-outline-success btn.sm" value="ver productos" 
+                  (click)="mostrar_modal(1,item.id_venta)"
                   data-bs-toggle="modal" data-bs-target="#verproductos">
                   </td>
                   <td>{{item.total | currency}}</td>
@@ -64,8 +64,25 @@
   </section>
   
   <div id="verproductos" *ngIf="modal==true">
-    ashadjdj
-    <input type="button" class="btn btn-secundary" value="cerrar" (click)
-    ="mostrar_modal(0)">
-
+    <table class="table">
+      <tr>
+        <th>Codigo</th>
+        <th>Nombre</th>
+        <th>V. Unitario</th>
+        <th>Cantidad</th>
+        <th>Subtotal</th>
+      </tr>
+      <tr *ngFor="let itemp of productos">
+        <td>{{itemp[0]}}</td>
+        <td>{{itemp[1]}}</td>
+        <td>{{itemp[2] | currency}}</td>
+        <td>{{itemp[3]}}</td>
+        <td>{{itemp[4] | currency}}</td>
+      </tr>
+      <tr >
+        <td colspan="4" style="text-align: right;">Total</td>
+        <td>{{total | currency}}</td>
+    </table>
+    <input type="button" class="btn btn-secundary" value="Cerrar" 
+    (click)="mostrar_modal(0,1)">
   </div>

@@ -15,7 +15,7 @@ export class PedidoService {
     return this.http.get(`${this.url}?control=consulta`);
   }
   consultarp(id:number){
-    return this.http.get(`${this.url}?control=productos$id=$(id)`);
+    return this.http.get(`${this.url}?control=productos&id=${id}`);
   }
 
   eliminar(id:number){

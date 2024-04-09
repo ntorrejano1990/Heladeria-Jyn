@@ -12,30 +12,32 @@
     switch ($control) {
         case 'consulta':
             $vec = $pedido->consulta();
-            $datosj = json_encode($vec);
-            echo $datosj;
-        header('content-type: application/json');
         break;
         case 'insertar':
             $json = file_get_contents('php://input');
-            //$json = '{"nombre":"Prueba 2"}'; //para hacer pruebas datos directos
-            $params = json_decode($json);
-            $texto_arreglo = serialize($params->productos);//convertir datos a texto
-            $params->productos = $texto_arreglo;
-            $vec = $pedido->insertar($params);
-            echo $datosj;
-            header('Content-Type: application/json');
-        break;
+            /*$json = '{
+                "fecha":"2024-4-8",
+                "fo_cliente":123,
+                "fo_vendedor":5,
+                "productos":[
+                    ["001", "Coca cola 1.5 lts", 5522, 3, 16566],
+                    ["001", "Coca cola 1.5 lts", 5522, 3, 16566]
+                ],
+                "subtotal":16566,
+                "total":16566}'; //para hacer pruebas datos directos
+                */
+                $params = json_decode($json);
+                $vec = $pedido->insertar($params);
+                break;
 
         case 'productos':       
           $id = $_GET['id'];
           $vec = $pedido->consultap($id);
-          $datosj = json_encode($vec);
-         echo $datosj;
-         header('Content-Type: application/json');
           break;
         
     }
+    $datosj = json_encode($vec);
+    echo $datosj;
 
     
 

@@ -37,8 +37,8 @@
         }
 
         public function insertar($params){
-            $ins = "INSERT INTO venta(fecha, fo_cliente, productos, subtotal, total, fo_vendedor)
-                    VALUES('$params->fecha', '$params->fo_cliente', $params->productos, $params->subtotal,
+            $ins = "INSERT INTO ventas(fecha, fo_cliente, productos,subtotal, total, fo_vendedor)
+                    VALUES('$params->fecha', '$params->fo_cliente', '" . json_encode($params->productos) . "', $params->subtotal,
                     $params->total, $params->fo_vendedor)";
             mysqli_query($this->conexion, $ins);
             $vec = [];
@@ -76,14 +76,13 @@
         }
 
         public function consultap($id){
-            $con = "SELECT productos from ventas WHERE id_venta = $id";
+            $con = "SELECT productos, total from ventas WHERE id_venta = $id";
             $res = mysqli_query($this->conexion, $con);
             $row = mysqli_fetch_array($res); 
-            $vec = unserialize($row[0]);       
+            $vec ['productos']= json_decode($row[0]); 
+            $vec['total'] = $row[1];      
                       
             return $vec;
             }
     }  
 
-
-?>
