@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heladeria J&J</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            margin: 0; /* Añade margen 0 para evitar espacios alrededor del body */
+        }
+
+        .login-box-container {
+            background: url('./../../assets/dist/img/fondo.jpg') center center fixed;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .login-box {
+            background-color: rgba(248, 249, 250, 0.8);
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            border: 1px solid purple;
+        }
+
+        .login-logo {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .login-title {
+            text-align: center;
+            position: relative;
+            height: 50px;
+            margin-bottom: 30px;
+        }
+
+        .login-title img {
+            max-width: 90px;
+            max-height: 90px;
+            border-radius: 50%;
+            margin-top: 20px;
+        }
+
+        .login-title i {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 24px;
+        }
+
+        .login-title .fas {
+            color: purple;
+        }
+
+        .btn-primary {
+            background-color: purple;
+            color: white;
+        }
+
+        .btn-primary:active {
+            background-color: darkpurple;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="login-box-container">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-6 col-lg-4">
+                    <div class="login-box">
+                        <div class="login-logo">
+                            <div class="login-title">
+                                <i><img src="./../../assets/dist/img/logo8.png" alt="Heladeria J&J"></i>
+                            </div>
+                            <h2 class="text-center" style="font-family: Arial, sans-serif; font-weight: bold;"></h2>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email"><i class="fas fa-envelope" style="color: purple;"></i>Correo electronico
+                                </label>
+                            <input type="email" class="form-control" id="email" aria-describedby="emailHelp"
+                                placeholder="Digite Correo " [(ngModel)]="email">
+                        </div>
+                        <div class="form-group">
+                            <label for="password"><i class="fas fa-key" style="color:purple;"></i>Contraseña</label>
+                            <input type="password" class="form-control" id="password" placeholder="digite Contraseña"
+                                [(ngModel)]="clave">
+                        </div>
+                        <div class="col-12" *ngIf="error==true">
+                            <span style="color: blue;">Correo o Contraseña incorrecta</span>
+                        </div>
+                        <input type="button" value="Iniciar sesión" class="btn btn-primary btn-block"
+                            style="width: 100%;" (click)="consulta('')">
+
+                        <hr>
+                        <p class="text-center" style="color: blue;">¿No tienes una cuenta?</p>
+                        <p class="text-center"><a href="#" style="color: black;">Inscribirse</a></p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>

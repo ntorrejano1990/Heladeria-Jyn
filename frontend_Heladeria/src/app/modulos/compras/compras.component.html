@@ -1,0 +1,60 @@
+<!-- Content Header (Page header) -->
+<div class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1 class="m-0">Compras</h1>
+        </div><!-- /.col -->
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item active">Compras</li>
+          </ol>
+        </div><!-- /.col -->
+      </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+  </div>
+  <section class="content">
+    <div class="container-fluid">
+        <!-- Contenido-->
+        <hr>
+        <input type="button" value="Insertar Compras" class="btn btn-warning">
+        <!--Formulario-->
+        <div id="formulario"></div>
+        <hr>
+        <div id="tabla">
+          <div class="row">
+            <div class="col-lg-1"></div>
+            <div class="col-lg-10">
+              <div class="table-responsive">
+                <table class="table">
+                  <tr>
+                    <th>Fecha</th>
+                  <th>Proveedor</th>
+                  <th>Productos</th>
+                  <th>Subtotal</th>
+                  <th>Total</th>
+                  <th>Usuario</th>
+                  <th>Acciones</th>
+                </tr>
+                <tr *ngFor="let item of compras">
+                  <td>{{item.fecha}}</td>
+                  <td>{{item.proveedor}}</td><!--ojo como viene de otra tabla se debe llamar con el alias quele demos en el script-->
+                  <td>{{item.productos}}</td>
+                  <td>{{item.subtotal | currency}}</td><!--Currency es para formato decimal-->
+                  <td>{{item.total | currency}}</td>
+                  <td>{{item.usuario}}</td>
+                    <td>
+                      <span class="fas fa-edit" style="color: blue; cursor: pointer" title="Editar"></span>
+                      <span class="fas fa-minus-square" style="color: red; cursor: pointer" title="Eliminar"></span>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+            <div class="col-lg-1"></div>
+          </div>
+          
+        </div>
+    </div>
+  </section>
