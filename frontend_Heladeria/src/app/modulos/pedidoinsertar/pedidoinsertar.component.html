@@ -57,7 +57,7 @@
                                     <div class="row">
                                         <div class="col-lg-3">
                                             <input type="text" class="form-control" placeholder="Identificación del Cliente" 
-                                            [(ngModel)]="ident_cliente" (keyup)="consulta_cliente()">
+                                            [(ngModel)]="ident_cliente" (blur)="consulta_cliente()">
                                         </div>
                                         <div class="col-lg-9">
                                             {{nombre_cliente}}
@@ -65,6 +65,12 @@
                                     </div>  
                                 </td>
                             </tr>
+                            <tr>
+                                <div class="col-12"*ngIf="idCliente==false" >
+                                        <span style="color: red;">Ingrese un número de identificaión valido</span>
+                                </div>
+                            </tr>
+                            
                         </thead>
                     </table>
                 </div>

@@ -13,6 +13,8 @@ export class PedidoinsertarComponent {
 
   productos: any;
   cliente: any;
+  idCliente = true;
+  numProducts = false;
   ident_cliente = "";
   nombre_cliente = "";
   id_cliente: any;
@@ -44,21 +46,25 @@ export class PedidoinsertarComponent {
   consulta_cliente(){
     this.scliente.ccliente(this.ident_cliente).subscribe((result:any)=>{
       this.cliente=result;
-      this.nombre_cliente = this.cliente[0].nombre;
-      console.log(this.cliente);
+      this.idCliente = this.cliente[0] != null
+      this.nombre_cliente = this.cliente[0] != null ? this.cliente[0].nombre : ""
+      ;
     })
   }
 
   seleccionar(valores:any, id:number){
     let cantidad = Number(prompt("Ingrese la cantidad a llevar"));
-    this.arreglo_productos = [valores.codigo, valores.nombre, Number(valores.precio_venta), cantidad, cantidad * Number
-    (valores.precio_venta)];
-    this.matriz_producto.push(this.arreglo_productos);
+    if (cantidad > 0 && cantidad != null && cantidad != undefined){
 
-    let largo = this.matriz_producto.length;
-    this.total = 0;
-    for(let i=0; i<largo; i++){
-      this.total = this.total + this.matriz_producto[i][4];
+      this.arreglo_productos = [valores.codigo, valores.nombre, Number(valores.precio_venta), cantidad, cantidad * Number
+      (valores.precio_venta)];
+      this.matriz_producto.push(this.arreglo_productos);
+
+      let largo = this.matriz_producto.length;
+      this.total = 0;
+      for(let i=0; i<largo; i++){
+        this.total = this.total + this.matriz_producto[i][4];
+      }
     }
 
     //console.log(this.matriz_producto);
@@ -66,22 +72,27 @@ export class PedidoinsertarComponent {
   }
 
   guardar(){
+    this.consulta_cliente();
     let fecha = new Date();
     this.pedido.fecha = `${fecha.getFullYear()}-${fecha.getMonth()+1}-${fecha.getDate()}`;
     this.pedido.fo_cliente = Number(this.cliente[0].id_cliente);
     this.pedido.productos = this.matriz_producto;
+    this.numProducts = this.matriz_producto.length > 0;
     this.pedido.subtotal = this.total;
     this.pedido.total = this.total;
     this.pedido.fo_vendedor = Number(sessionStorage.getItem('id'));
     //console.log(this.pedido);
 
-    this.spedido.insertar(this.pedido).subscribe((datos:any) => {
-      console.log(datos);
-      if(datos['resultado']=='ok'){
-        console.log(datos['resultado']);
-        this.router.navigate(['pedido']);
-      }
-    });
+    if(this.idCliente && this.numProducts){
+      this.spedido.insertar(this.pedido).subscribe((datos:any) => {
+        console.log(datos);
+        if(datos['resultado']=='ok'){
+          console.log(datos['resultado']);
+          this.router.navigate(['pedido']);
+        }
+      });
+    }else{
+      alert("El cliente no existe");}
   }
 
 }

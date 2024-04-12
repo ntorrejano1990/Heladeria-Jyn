@@ -170,17 +170,16 @@ export class ProductoComponent {
         /////////////////////////////
         this.sproducto.eliminar(id).subscribe((datos:any) => {
           if(datos['resultado']=='OK'){
+            Swal.fire({
+              title: "¡Producto Eliminado!",
+              text: "El producto ha sido Eliminado.",
+              icon: "success"
+            });
             this.consulta();
           }
         })
         /////////////////////////////
 
-
-        Swal.fire({
-          title: "¡Producto Eliminado!",
-          text: "El producto ha sido Eliminado.",
-          icon: "success"
-        });
       }
     });
   }

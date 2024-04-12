@@ -28,10 +28,10 @@
         }
 
         public function eliminar($id){
-            $del = "DELETE FROM venta WHERE id_venta = $id";
+            $del = "DELETE FROM ventas WHERE id_venta = $id";
             mysqli_query($this->conexion, $del);
             $vec = [];
-            $vec['resultado'] = "ok";
+            $vec['resultado'] = "OK";
             $vec['mensaje'] = "La venta ha sido eliminado";
             return $vec;
         }

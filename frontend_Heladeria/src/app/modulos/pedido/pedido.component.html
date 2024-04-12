@@ -49,9 +49,8 @@
                   <td>{{item.total | currency}}</td>
                   <td>{{item.vendedor}}</td>
                   <td>
-                    <span class="fas fa-edit" style="color: blue; cursor: pointer" title="Editar"></span>
-                    <span class="fas fa-minus-square" style="color: red; cursor: pointer" title="Anular"></span>
-                  </td>
+                      <button type="button" class="btn btn-danger" (click)="eliminar(item.id_venta)">Anular</button> 
+                    </td>
                 </tr>
               </table>
             </div>

@@ -14,4 +14,7 @@ export class LoginService {
     return this.http.get(`${this.url}?email=${email}&clave=${clave}`);
   }
 
+  enviarToken(token: string) {
+    return this.http.post(`${this.url}?control=token`, { token });
+  }
 }

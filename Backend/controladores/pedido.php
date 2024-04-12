@@ -34,6 +34,10 @@
           $id = $_GET['id'];
           $vec = $pedido->consultap($id);
           break;
+        case 'eliminar':
+            $id = $_GET['id'];
+            $vec = $pedido->eliminar($id);
+            break;
         
     }
     $datosj = json_encode($vec);
