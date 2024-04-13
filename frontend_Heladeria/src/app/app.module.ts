@@ -4,6 +4,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule} from '@angular/common/http';
 
+import {RECAPTCHA_V3_SITE_KEY, RecaptchaV3Module} from 'ng-recaptcha';
+
 import { AppComponent } from './app.component';
 import { NavComponent } from './estructura/nav/nav.component';
 import { AsideComponent } from './estructura/aside/aside.component';
@@ -44,12 +46,16 @@ import { PedidoinsertarComponent } from './modulos/pedidoinsertar/pedidoinsertar
     PedidoinsertarComponent
   ],
   imports: [
+    RecaptchaV3Module,
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [{
+    provide: RECAPTCHA_V3_SITE_KEY,
+    useValue: '6LcIfbgpAAAAAIvNFnl4tTuzss_qUIf2nitdeA-O',
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Heladeria J&J</title>
+
+    <script src="https://www.google.com/recaptcha/enterprise.js?render=6LcIfbgpAAAAAIvNFnl4tTuzss_qUIf2nitdeA-O"></script>
     <!-- Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
@@ -102,12 +104,18 @@
                         <div class="col-12" *ngIf="error==true">
                             <span style="color: blue;">Correo o Contraseña incorrecta</span>
                         </div>
+                        <div class="col-12" *ngIf="isRobot==true">
+                            <span style="color: blue;">Eres un Robot</span>
+                        </div>
                         <input type="button" value="Iniciar sesión" class="btn btn-primary btn-block"
                             style="width: 100%;" (click)="consulta('')">
 
                         <hr>
                         <p class="text-center" style="color: blue;">¿No tienes una cuenta?</p>
                         <p class="text-center"><a href="#" style="color: black;">Inscribirse</a></p>
+
+
+                        
 
                     </div>
                 </div>
