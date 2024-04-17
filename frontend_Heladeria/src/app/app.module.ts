@@ -54,7 +54,7 @@ import { PedidoinsertarComponent } from './modulos/pedidoinsertar/pedidoinsertar
   ],
   providers: [{
     provide: RECAPTCHA_V3_SITE_KEY,
-    useValue: '6LcIfbgpAAAAAIvNFnl4tTuzss_qUIf2nitdeA-O',
+    useValue: '6LcXlL0pAAAAAFUH6d20-Tl1dJYc6POMYqJSN_gI',
   }],
   bootstrap: [AppComponent]
 })

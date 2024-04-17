@@ -5,7 +5,7 @@
 
                     
         public function captcha($token){
-            define ('CLAVE', '6LcIfbgpAAAAAIopAcI7cYupFwZCPuWqLdunRKJH');
+            define ('CLAVE', '6LcXlL0pAAAAAPojSlOhN5F89degJ1vGkjc8MiSt');
 
             $cu = curl_init();
             curl_setopt($cu, CURLOPT_URL, "https://www.google.com/recaptcha/api/siteverify");
